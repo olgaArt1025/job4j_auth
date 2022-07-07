@@ -22,4 +22,17 @@ CREATE TABLE if not exists employee_person (
        PRIMARY KEY (employee_id , person_id ),
        FOREIGN KEY (employee_id) REFERENCES employee,
        FOREIGN KEY (person_id ) REFERENCES person
-)
+);
+
+create table if not exists room (
+     id serial primary key not null,
+     name varchar(100)
+
+);
+
+create table if not exists message (
+     id serial primary key,
+     message TEXT,
+     room_id int not null references room(id),
+     person_id int not null references person(id)
+);
